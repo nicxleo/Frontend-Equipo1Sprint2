@@ -1,0 +1,39 @@
+<div class="container-pdf">
+
+    <div class="container-pdf__left-side">
+        <div class="list">
+            <div class="list-row" *ngFor="let list of areaInfo; let i = index"
+                (click)="moveTo(list); $event.stopPropagation();">
+                <div class="delete-btn">
+                    <i class="fas fa-close" (click)="delete(list); $event.stopPropagation();"></i>
+                </div>
+                <div class="title">Comentario {{i + 1}}:</div>
+            <div>{{list.comment}}</div> 
+                <div class="page-number">
+                    Pagina {{list?.pageNumber}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div #pdfContainer class="container-pdf__right-side" (mousemove)="mouseEvent($event)"
+        (mousedown)="mouseEvent($event)" (mouseup)="mouseEvent($event)">
+        <pdf-viewer src="https://agiles-grupo1-sisred-back.herokuapp.com/assets/files/pdf-test.pdf"
+            [stick-to-page]="true" [render-text]="true" (page-rendered)="pageRendered($event)" style="display: block;">
+        </pdf-viewer>
+
+    </div>
+
+
+    <div class="js-popper popper" [style.display]="getStyle()">
+        <pre>
+                <div class="icons">
+
+                <input id="name" type="text" [(ngModel)]="comment" />
+                <button class="fas fa-plus" [disabled]="!comment" (click)="save()"></button>
+                <button class="fas fa-close" (click)="cancel($event)"></button>
+            </div>
+        </pre>
+        
+
+    </div>

@@ -1,0 +1,113 @@
+<p>
+<ngb-alert *ngIf="successMessage" type="success" (close)="successMessage = null">{{ successMessage }}</ngb-alert>
+</p>
+<div class="marginH content-wrapper">
+<section class="content-header">
+    <h1>
+      Recurso
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+      <li class="active">Recurso</li>
+    </ol>
+  </section>
+  <section class="content">
+  <form [formGroup]="detailResourceForm">
+    <div class="row">
+      <div class="col-md-12">
+       <div class="box box-primary">
+          <div class="box">
+             <div class="box-header with-border">
+                <div class="col-sm-10">
+                  <h3>{{ resourceDetailsoModel?.name }}</h3>
+                </div>
+                <div class="col-sm-2">
+                  <div class="text-center">
+                    <img [src]="resourceDetailsoModel?.thumbnail" width="100" height="100" />
+                  </div>
+                </div>
+              </div>
+            <div class="box-body">
+              <div class="row" *ngIf="showInputText">
+                <div class="col-sm-4">Nombre</div>
+                <div class="col-sm-8">
+                  <input formControlName="name" [(ngModel)]="resourceDetailsoModel.name" type="text" id="inputName"
+                    placeholder="Nombre" />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-4">Tipo</div>
+                <div class="col-sm-8">
+                  {{ resourceDetailsoModel?.type }}
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-4">Autor</div>
+                <div class="col-sm-8">
+                  {{ resourceDetailsoModel?.author }}
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-4">Fecha creacion</div>
+                <div class="col-sm-8">
+                  {{ resourceDetailsoModel?.creationDate | date: "dd-MM-yyyy" }}
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-4">Responsable</div>
+                <div class="col-sm-8">
+                  {{ resourceDetailsoModel?.lastUserModification }}
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-4">Fecha actualizacion</div>
+                <div class="col-sm-8">
+                  {{ resourceDetailsoModel?.updateDate | date: "dd-MM-yyyy" }}
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-4">Descripcion</div>
+                <div *ngIf="!showInputText" class="col-sm-8">
+                  {{ resourceDetailsoModel?.description }}
+                </div>
+                <div *ngIf="showInputText" class="col-sm-8">
+                  <textarea rows="4" cols="38" formControlName="description" [(ngModel)]="resourceDetailsoModel.description"
+                    type="text" id="inputDescription" placeholder="Description">
+                  </textarea>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-4">Metadata</div>
+                <div class="col-sm-8">
+                  <div class="btn-group btn-space" role="group" *ngFor="let metadata of resourceDetailsoModel?.metadata">
+                    <button type="button" class="btn btn-outline-primary">
+                      {{ metadata.tag }}
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-2">
+                  <button *ngIf="!showInputText" type="button" (click)="edit()" class="btn btn-primary btn-sm btn-block">
+                    Modificar
+                  </button>
+
+                  <button *ngIf="showInputText" type="button" (click)="updateResource()" class="btn btn-primary btn-sm btn-block"
+                    [disabled]="!detailResourceForm.valid">
+                    Guardar
+                  </button>
+                  <button *ngIf="showInputText" type="button" (click)="cancelEdit()" class="btn btn-secondary btn-sm btn-block">
+                    Cancelar
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+   </form>
+
+ </section>
+</div>
+

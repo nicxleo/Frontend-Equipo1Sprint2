@@ -1,0 +1,59 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      Agregar un Recurso      
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>        
+      <li class="active">Agregar un Recurso</li>
+    </ol>
+  </section>
+
+  <!-- Main content -->
+<div class="container">  
+  <form name="" class="card" [formGroup]="registerForm">
+    <h2 #title name="title">Agregar un Recurso</h2>
+    <p name="Loading" [hidden]="!uploading">Subiendo Archivo</p>
+    <p name="Loading" [hidden]="!uploadSuccessful">Finalizado exitosamente</p>
+    <button class="btn btn-primary" type="button" id="file btn" [disabled]="FileSelected" (click)="addFiles()">Seleccionar Archivo</button>   
+    <input class="form-control" type="file" #file style="display: none" (change)="onFilesAdded()"/>
+    <table class="table form-horizontal">
+        <tbody>
+            <tr>
+              <th scope="row"></th>
+              <td><label for="nombre" class="col-xs-6 control-label">Nombre</label></td>
+              <td><input type="text" class="col-xs-8 form-control" id="nombre" formControlName="nombre"></td>
+            </tr>
+            <tr>
+              <th scope="row"></th>
+              <td><label for="tipo" class="col-xs-6 control-label">Tipo</label></td>
+              <td><input type="text" class="col-xs-8 form-control" id="tipo" formControlName="tipo"></td>
+            </tr>
+            <tr>
+              <th scope="row"></th>
+              <td><label for="autor" class="col-xs-6 control-label">Autor</label></td>
+              <td><input type="text" class="col-xs-8 form-control" id="autor" formControlName="autor"></td>
+            </tr>
+            <tr>
+              <th scope="row"></th>
+              <td><label for="fechaCreacion" class="col-xs-6 control-label">Fecha creación</label></td>
+              <td><input type="text" class="col-xs-8 form-control" id="fechaCreacion" formControlName="fechaCreacion"></td>
+            </tr>
+            <tr>
+              <th scope="row"></th>
+              <td><label for="descripcion" class="col-xs-6 control-label">Descripción</label></td>
+              <td><input type="textarea" rows="4" cols="50" class="col-xs-8 form-control" id="descripcion" formControlName="descripcion"></td>
+            </tr>
+            <tr>
+              <th scope="row"></th>
+              <td><button type="button" class="btn btn-primary btn-md" [disabled]="!registerForm.valid" id="send" name="send" type="submit" (click)="register()">Guardar</button></td>
+              <td><button type="button" class="btn btn-secondary btn-md" (click)="goBack()">Cancelar</button></td>
+            </tr>
+          </tbody>
+      </table>
+  </form>
+</div>
+</div>
+<!-- /.content-wrapper -->

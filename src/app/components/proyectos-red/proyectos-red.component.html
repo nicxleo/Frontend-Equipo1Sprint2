@@ -1,0 +1,46 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      Proyectos del RED - <small>{{detalleRed.nameRed}}</small>
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+      <li class="active">Proyectos del RED</li>
+    </ol>
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="row">
+      <!-- left column -->
+      <div class="col-md-6">
+        <div class="list-group">
+          <div ng-if="proyectos.length > 0">
+            <div *ngFor="let proyecto of proyectos" href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1"><b>{{proyecto.name}}</b></h5>
+                <small>{{proyecto.createdDate}}</small>
+              </div>
+              <p class="mb-1">{{proyecto.typeFile}}</p>
+              <p class="mb-1">{{proyecto.autor}}</p>
+              <p><button type="button" class="btn btn-primary">Ver Detalle</button></p>
+            </div>
+          </div>
+        </div>
+        <!-- /.box primary-->
+      </div>
+      <!--/.col (left) -->
+    </div>
+    <div class="box-footer">
+        <button type="button" class="btn btn-default" (click)="goBack()">Volver</button>&nbsp;&nbsp;
+        <button type="button" class="btn btn-warning" routerLink="/red/{{idRed}}/proyecto/agregar">Agregar Proyecto al RED</button>
+    </div>
+    <!-- /.row -->
+  </section>
+  <!-- /.content -->
+
+
+</div>
+<!-- /.content-wrapper -->

@@ -1,0 +1,159 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      Detalle RED
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+      <li class="active">Detalle RED</li>
+    </ol>
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="row">
+      <!-- left column -->
+      <div class="col-md-12">
+        <!-- general form elements -->
+        <div class="box box-primary">
+          <div class="box">
+            <div class="box-header with-border">
+              <div class="row">
+                <div class="col col-md-9">
+                  <h3 class="box-title">{{detalle.nameRed}}</h3>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col col-md-9">
+                  <a href="" routerLink="">
+                    <h3 class="box-title">{{detalle.nameProject}}</h3>
+                  </a>
+                </div>
+                <div class="col col-md-3">
+                  <h3 class="box-title">Estado: {{detalle.status}}</h3>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col col-md-9">
+                  <h3 class="box-title">{{detalle.url}}</h3>
+                </div>
+              </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <!-- table Recursos asociados -->
+              <table class="table table-hover table-bordered table-margin">
+                <thead>
+                  <tr>
+                    <td colspan="3">
+                      <h3 class="text-center">Recursos asociados</h3>
+                    </td>
+                  </tr>
+                  <tr class="thead-light text-center">
+                    <th scope="col">Nombre recursos</th>
+                    <th scope="col">Formato archivo</th>
+                    <th scope="col">Detalle</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let recurso of recursos">
+                    <td>{{recurso.name}}</td>
+                    <td>{{recurso.typeFormat}}</td>
+                    <td class="text-center" [routerLink]="['/red/' + idRed + '/recursos/' + recurso.id]"
+                      routerLinkActive="router-link-active">
+                      <button type="button" class="btn btn-primary">Detalle</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="text-center">
+                <button type="button" class="btn btn-info m-2" [routerLink]="['/red/' + idRed + '/recursos']"
+                  routerLinkActive="router-link-active">Ver recursos</button>
+              </div>
+              <hr />
+              <!-- table Personas asignadas al RED -->
+              <table class="table table-hover table-bordered table-margin">
+                <thead>
+                  <tr>
+                    <td colspan="2">
+                      <h3 class="text-center">Personas asignadas al RED</h3>
+                    </td>
+                  </tr>
+                  <tr class="thead-light text-center">
+                    <th scope="col">Nombre completo</th>
+                    <th scope="col">Rol</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let persona of personas">
+                    <td>{{persona.name}}</td>
+                    <td>{{persona.rol}}</td>
+                  </tr>
+                </tbody>
+              </table>
+              <!-- table Proyectos del RED -->
+              <table class="table table-hover table-bordered table-margin">
+                <thead>
+                  <tr>
+                    <td colspan="4">
+                      <h3 class="text-center">Proyectos del RED</h3>
+                    </td>
+                  </tr>
+                  <tr class="thead-light text-center">
+                    <th scope="col">Autor</th>
+                    <th scope="col">Tipo archivo</th>
+                    <th scope="col">Fecha creación</th>
+                    <th scope="col">Descripción</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let proyecto of proyectos">
+                    <td>{{proyecto.autor}}</td>
+                    <td>{{proyecto.typeFile}}</td>
+                    <td>{{proyecto.createdDate}}</td>
+                    <td>{{proyecto.description}}</td>
+                  </tr>
+                </tbody>
+              </table>
+              <!-- /.table Proyectos del RED -->
+              <!-- tdiv metadata del RED -->
+              <div class="py-5">
+                <h3 class="text-justify">Metadata del RED</h3>
+                <div class="card card-body">
+                  <div class="row">
+                    <div class="col col-md-12">
+                      <span class="metadata-padding" *ngFor="let meta of metadata">
+                        <span class="badge badge-pill label-info text-sm-center text-wrap">{{meta.tag}}</span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /.tdiv metadata del RED -->
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+          <div class="box-footer">
+            <button type="button" (click)="goBack()" class="btn btn-default spaceDer m-2"><i
+                class="fas fa-chevron-left"></i>&nbsp;Volver</button>
+            <button type="button" class="btn btn-primary m-2" [routerLink]="['/red/' + idRed + '/relacionados']"
+              routerLinkActive="router-link-active">Ver REDs relacionados</button>
+            <button type="button" class="btn btn-dark m-2 text-white" [routerLink]="['/reds/' + idRed + '/avance']"
+              routerLinkActive="router-link-active">Ver avance red</button>
+          </div>
+          <!-- /.box-footer -->
+        </div>
+        <!-- /.box primary-->
+      </div>
+      <!--/.col (left) -->
+    </div>
+    <!-- /.row -->
+  </section>
+  <!-- /.content -->
+
+
+</div>
+<!-- /.content-wrapper -->

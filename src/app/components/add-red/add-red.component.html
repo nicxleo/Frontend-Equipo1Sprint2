@@ -1,0 +1,105 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>
+      Agregar proyecto RED        
+    </h1>
+    <ol class="breadcrumb">
+      <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>        
+      <li class="active">Agregar proyecto RED</li>
+    </ol>
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="row">
+      <!-- left column -->
+      <div class="col-md-12">
+        <!-- general form elements -->
+        <div class="box box-primary">            
+          <!-- form start -->
+          <form role="form" [formGroup]="addRedForm">
+            <div class="box">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Ingrese la información del proyecto</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                  <table class="table table-bordered">                      
+                    <tr>                    
+                      <td>Nombre</td>
+                      <td>
+                          <input type="text" class="form-control" formControlName="name">
+                      </td>                        
+                    </tr>
+                    <tr>                    
+                        <td>Tipo</td>
+                        <td>
+                            <input type="text" class="form-control" formControlName="type">
+                        </td>                        
+                    </tr>
+                    <tr>                    
+                      <td>Autor</td>
+                      <td>
+                          <input type="text" class="form-control" formControlName="author">
+                      </td>                        
+                    </tr>                    
+                    <tr>                    
+                        <td>Fecha de creación</td>
+                        <td>
+                            <div class="input-group date">
+                                <div class="input-group-addon">
+                                  <i class="fa fa-calendar"></i>
+                                </div>
+                                <input type="text" class="form-control pull-right" id="datepickerdisabled">
+                              </div>
+                        </td>                        
+                    </tr> 
+                    <tr>                    
+                        <td>Descripción</td>
+                        <td>
+                            <textarea class="form-control" rows="3" placeholder="Ingrese la descripción" formControlName="description"></textarea>
+                        </td>                        
+                    </tr>
+                    <tr>                    
+                        <td>Seleccionar carpeta</td>
+                        <td>         
+                            <input
+                            #folderInput
+                            type="file"
+                            webkitDirectory>                                                                         
+                        </td>                          
+                    </tr>
+                    <tr>                    
+                        <td>Carpeta</td>
+                        <td>
+                            <input type="text" class="form-control" formControlName="folder">
+                        </td>                        
+                    </tr>                                                        
+                  </table>
+                </div>
+                <!-- /.box-body -->            
+              </div>
+              <!-- /.box -->
+
+            <div class="box-footer">
+              <button type="button" (click)="goBack()" class="btn btn-default spaceDer">Cancelar</button>
+              <button type="submit" class="btn btn-info" (click)="filesPickedToArray(folderInput.files)">Guardar</button>            
+            </div>
+            <!-- /.box-footer -->
+          </form>
+        </div>
+        <!-- /.box -->        
+      </div>
+      <!--/.col (left) -->
+      <!-- /.row -->
+    </div>
+    <!-- /.row -->
+  </section>
+  <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+<ngx-spinner bdOpacity = 0.9bd Color = "rgba(34,31,31,0)" size = "medium"color = "#000000" type = "ball-spin" fullScreen = "true">
+<p style="color: white" > Guardando... </p>
+</ngx-spinner>
